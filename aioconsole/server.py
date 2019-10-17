@@ -53,7 +53,7 @@ def start_console_server(host=None, port=None, path=None,
 
 def print_server(server, name='console', file=None):
     interface = server.sockets[0].getsockname()
-    if server.sockets[0].family != socket.AF_UNIX:
+    if server.sockets[0].family != getattr(socket, 'AF_UNIX', 'N/A'):
         interface = '{}:{}'.format(*interface)
     print('The {} is being served on {}'.format(name, interface), file=file)
 
